@@ -5,6 +5,8 @@ Basically, it's a better version of the serial plotter that comes with the
 Arduino IDE. I needed this for my drum module project, to be able to analyze
 feedback from piezoelectric sensors on mesh drum heads.
 
+![image](docs/main-screenshot.png)
+
 The Arduino firmware located at `embedded/embedded.ino` modifies the Arduino's
 ADC prescaler to allow for faster sampling (~18 microseconds per `analogRead()`). 
 The code then simply reads the value on pin `A0` continuously, saving the value
