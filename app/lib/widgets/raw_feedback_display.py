@@ -1,9 +1,7 @@
-from typing import List
-from PyQt6.QtWidgets import QWidget, QVBoxLayout
+from PyQt6.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout
 from PyQt6.QtWidgets import QLabel
 from lib.serial_message import Message
 from pyqtgraph import PlotWidget, mkPen
-from PyQt6.QtWidgets import QWidget, QVBoxLayout
 from lib.widgets.heading_label import HeadingLabel
 from lib.widgets.text_box import TextBox
 
@@ -27,9 +25,8 @@ class RawFeedbackDisplay(QWidget):
 
 		self.graph = PlotWidget()
 		self.graph.enableMouse(False)
-		# self.graph.setYRange(-50, 300)
 		pen = mkPen(color=(0, 255, 0))
-		self.data_line =  self.graph.plot(
+		self.data_line = self.graph.plot(
 			self.x_values,
 			self.y_values,
 			pen=pen
@@ -48,8 +45,12 @@ class RawFeedbackDisplay(QWidget):
 		self.graph.getAxis("left").setPen(mkPen(color=(0, 0, 0, 0)))
 
 		# Label
-		self.label = QLabel("")
-		layout.addWidget(self.label)
+		label_layout = QHBoxLayout()
+		layout.addLayout(label_layout)
+		label_layout.addWidget(QLabel("Value:"))
+		label_layout.addStretch(1)
+		self.label = QLabel("--")
+		label_layout.addWidget(self.label)
 
 		# Align everything to the top
 		layout.addStretch(1)
