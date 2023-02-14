@@ -7,7 +7,7 @@ class HeadingLabel(QLabel):
 	def __init__(self, text: str):
 		super().__init__()
 		font = QFont()
-		font.setPointSize(12)
+		font.setPointSize(11)
 		font.setBold(True)
 		self.setFont(font)
 		self.setText(text)

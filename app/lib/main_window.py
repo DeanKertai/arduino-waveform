@@ -23,6 +23,8 @@ class MainWindow(QMainWindow):
 		outer_layout = QHBoxLayout()
 		options_layout = QVBoxLayout()
 		options_widget = QWidget()
+
+		options_layout.setContentsMargins(0, 0, 0, 0)
 		options_widget.setFixedWidth(200)
 		options_widget.setLayout(options_layout)
 
