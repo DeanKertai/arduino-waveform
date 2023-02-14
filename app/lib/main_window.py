@@ -1,6 +1,5 @@
 from PyQt6.QtWidgets import QMainWindow, QWidget
 from PyQt6.QtWidgets import QHBoxLayout, QVBoxLayout
-from PyQt6.QtGui import QFont
 from lib.widgets.port_selector import PortSelector
 from lib.widgets.raw_feedback_display import RawFeedbackDisplay
 from lib.widgets.graph import GraphWidget
@@ -27,15 +26,8 @@ class MainWindow(QMainWindow):
 		options_widget.setFixedWidth(200)
 		options_widget.setLayout(options_layout)
 
-		# Fonts
-		label_font = QFont()
-		label_font.setPointSize(12)
-		label_font.setBold(True)
-		label_description_font = QFont()
-		label_description_font.setPointSize(9)
-
 		# Port Selector
-		self.port_selector = PortSelector(label_font, label_description_font)
+		self.port_selector = PortSelector()
 		self.port_selector.update_port.connect(self.handle_port_change)
 		options_layout.addWidget(self.port_selector)
 

@@ -1,36 +1,24 @@
 import time
-from typing import List
 from serial.tools import list_ports
-from PyQt6.QtWidgets import QWidget, QVBoxLayout, QSizePolicy
-from PyQt6.QtWidgets import QLabel, QComboBox
-from PyQt6.QtGui import QFont
-from PyQt6.QtCore import Qt, pyqtSignal, QThread
+from PyQt6.QtWidgets import QWidget, QVBoxLayout, QComboBox
+from PyQt6.QtCore import pyqtSignal, QThread
+from lib.widgets.heading_label import HeadingLabel
+from lib.widgets.text_box import TextBox
 
 
 class PortSelector(QWidget):
 	update_port = pyqtSignal(str)
 
-	def __init__(self, header_font: QFont, description_font: QFont):
+	def __init__(self):
 		super().__init__()
 
 		layout = QVBoxLayout()
 		self.setLayout(layout)
 
-		# Header
-		header = QLabel("Port:")
-		header.setFont(header_font)
-		layout.addWidget(header)
-
-		# Description
-		description = QLabel(
-			"Select the serial port that your device is connected to")
-		description.setWordWrap(True)
-		description.setSizePolicy(
-			QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Expanding)
-		description.setAlignment(
-			Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignLeft)
-		description.setFont(description_font)
-		layout.addWidget(description)
+		# Heading and description
+		layout.addWidget(HeadingLabel("Port"))
+		layout.addWidget(TextBox(
+			"Select the serial port that your device is connected to"))
 
 		# Combo Box
 		self.combo = QComboBox()
