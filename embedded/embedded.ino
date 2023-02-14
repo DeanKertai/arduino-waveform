@@ -34,7 +34,7 @@ unsigned int capture_duration = 0;
  * We send the highest recorded raw value since the last transmission.
  * This is used to help set the threshold value
 */
-unsigned int raw_value_feedback_last_time = 0;
+unsigned long raw_value_feedback_last_time = 0;
 unsigned int raw_value_feedback_interval = 20;  // ms
 unsigned int raw_value_feedback_highest_value = 0;
 
